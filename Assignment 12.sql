@@ -42,6 +42,13 @@ insert into pizzarestaurant.order_items(item_count,order_id,item_id,customer_id)
 values(1,1,1,1),(1,1,3,1),(1,2,2,2),(2,2,3,2),(1,3,3,1),(1,3,4,1);
 
 
+select c.customer_id, c.customer_name,sum(m.price * ot.item_count) from pizzarestaurant.order_items ot
+LEFT JOIN pizzarestaurant.customer c on c.customer_id = ot.customer_id
+JOIN pizzarestaurant.orders o on o.order_id = ot.order_id
+JOIN pizzarestaurant.menu m on m.item_id = ot.item_id
+group by c.customer_id, o.order_time_stamp;
+
+
 select c.customer_id, c.customer_name,o.order_time_stamp,sum(m.price * ot.item_count) from pizzarestaurant.order_items ot
 LEFT JOIN pizzarestaurant.customer c on c.customer_id = ot.customer_id
 JOIN pizzarestaurant.orders o on o.order_id = ot.order_id
