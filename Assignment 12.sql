@@ -8,7 +8,7 @@ CREATE TABLE pizzarestaurant.customer(
 
 CREATE TABLE pizzarestaurant.orders(
 	order_id INT PRIMARY KEY AUTO_INCREMENT,
-    order_time_stamp datetime
+    order_time_stamp date
 );
 
 CREATE TABLE pizzarestaurant.menu(
@@ -31,7 +31,7 @@ insert into pizzarestaurant.customer (customer_id,customer_name,phone_number)
 values(1,'Trevor Page','226-555-4982'),(2,'John Doe','555-555-9498');
 
 insert into pizzarestaurant.orders(order_id,order_time_stamp)
-values(1,'2014/9/10/ 9:47:00'),(2,'2014/9/10 13:20:00'),(3,'2014/9/10/ 9:47:00');
+values(1,'2014/9/10/'),(2,'2014/9/10'),(3,'2014/9/10/');
 
 
 insert into pizzarestaurant.menu(item_id,price,MenuItem)
@@ -54,4 +54,5 @@ LEFT JOIN pizzarestaurant.customer c on c.customer_id = ot.customer_id
 JOIN pizzarestaurant.orders o on o.order_id = ot.order_id
 JOIN pizzarestaurant.menu m on m.item_id = ot.item_id
 group by c.customer_id, o.order_time_stamp;
+
 
